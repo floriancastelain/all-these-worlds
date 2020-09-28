@@ -7,12 +7,15 @@ public class Tile : MonoBehaviour
 
     public int x;
     public int y;
-
+    private Color originalColor;
+    private Color overColor = Color.red;
+    private MeshRenderer renderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        renderer = GetComponent<MeshRenderer>();
+        originalColor = renderer.material.color;
     }
 
     // Update is called once per frame
@@ -22,6 +25,9 @@ public class Tile : MonoBehaviour
     }
 
     void OnMouseOver() {
-        Debug.Log("toto");
+        renderer.material.color = overColor;
+    }
+    void OnMouseExit() {
+        renderer.material.color = originalColor;
     }
 }
